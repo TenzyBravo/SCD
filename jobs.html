@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Careers — The Safe Center For Development</title>
+<meta name="description" content="Open roles, internships, consultancies, and volunteer opportunities."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet"/>
+<link rel="icon" type="image/png" href="assets/images/logo/favicon-32.png" sizes="32x32"/>
+<link rel="icon" type="image/png" href="assets/images/logo/favicon-16.png" sizes="16x16"/>
+<link rel="apple-touch-icon" href="assets/images/logo/apple-touch-icon.png"/>
+<link rel="shortcut icon" href="assets/images/logo/wnbg.jpeg"/>
+<link rel="stylesheet" href="css/styles.css"/>
+<style>
+  .job {
+    display: grid; grid-template-columns: 1fr auto; gap: 1rem; align-items: center;
+    padding: 1.5rem; border: 1px solid var(--color-border); border-radius: var(--radius-md);
+    background: var(--color-bg); box-shadow: var(--shadow-sm); margin-bottom: 1rem;
+    transition: transform var(--transition), box-shadow var(--transition);
+  }
+  .job:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+  .job h3 { margin: 0 0 .3rem; }
+  .job-meta { color: var(--color-muted); font-size: .9rem; }
+  .job-meta span { margin-right: 1rem; }
+  @media (max-width: 640px) { .job { grid-template-columns: 1fr; } }
+</style>
+</head><body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="container nav">
+  <a class="brand" href="index.html" aria-label="The Safe Center For Development — Home"><img class="brand-logo" src="assets/images/logo/wnbg.jpeg" alt="The Safe Center For Development"/></a>
+  <nav aria-label="Primary"><ul class="nav-links">
+    <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="focus.html">Areas of Focus</a></li>
+    <li><a href="support.html">Support Units</a></li><li><a href="media.html">Media</a></li><li><a href="training.html">Training</a></li>
+    <li><a href="toolkits.html">Toolkits</a></li><li><a href="jobs.html">Jobs</a></li><li><a href="contact.html">Contact</a></li>
+  </ul></nav>
+  <div class="nav-actions"><button class="icon-btn" id="theme-toggle" aria-label="Toggle theme">☾</button><a class="btn btn-accent" href="index.html#donate">Donate</a><button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span></button></div>
+</div></header>
+
+<main id="main">
+<section class="page-banner"><div class="container">
+  <h1>Careers</h1>
+  <p>Join a team of passionate professionals working to build safer, more resilient communities across Zambia.</p>
+  <div class="breadcrumb"><a href="index.html">Home</a> / Jobs</div>
+</div></section>
+
+<section class="section"><div class="container">
+  <div class="section-header reveal"><span class="eyebrow">Open Roles</span><h2>Current Vacancies</h2></div>
+
+  <div class="reveal">
+    <div class="job"><div><h3>Programs Manager — Health</h3><div class="job-meta"><span>📍 Copperbelt</span><span>🕘 Full-time</span><span>📅 Closes 30 April 2026</span></div></div><a class="btn btn-primary" href="#apply">Apply</a></div>
+    <div class="job"><div><h3>M&E Officer</h3><div class="job-meta"><span>📍 Ndola</span><span>🕘 Full-time</span><span>📅 Closes 22 April 2026</span></div></div><a class="btn btn-primary" href="#apply">Apply</a></div>
+    <div class="job"><div><h3>Communications Intern</h3><div class="job-meta"><span>📍 Copperbelt</span><span>🕘 6-month internship</span><span>📅 Rolling</span></div></div><a class="btn btn-primary" href="#apply">Apply</a></div>
+    <div class="job"><div><h3>Consultancy: Baseline Study — Youth Programme</h3><div class="job-meta"><span>📍 Remote / Zambia</span><span>🕘 Short-term</span><span>📅 Closes 12 April 2026</span></div></div><a class="btn btn-primary" href="#apply">Apply</a></div>
+    <div class="job"><div><h3>Volunteer — Community Educator</h3><div class="job-meta"><span>📍 Various</span><span>🕘 Part-time</span><span>📅 Rolling</span></div></div><a class="btn btn-primary" href="#apply">Apply</a></div>
+  </div>
+</div></section>
+
+<section class="section" id="apply" style="background: var(--color-surface);"><div class="container">
+  <div class="section-header reveal"><span class="eyebrow">Application</span><h2>Apply Now</h2><p>Send us your CV and a short cover letter. We review applications on a rolling basis and get back to shortlisted candidates within two weeks.</p></div>
+  <form data-form class="reveal" style="max-width:720px; margin:0 auto; background:var(--color-bg); padding:2rem; border-radius:var(--radius-lg); box-shadow:var(--shadow-md);">
+    <div class="form-grid">
+      <div class="field"><label for="j-first">First name</label><input id="j-first" type="text" required/></div>
+      <div class="field"><label for="j-last">Last name</label><input id="j-last" type="text" required/></div>
+      <div class="field"><label for="j-email">Email</label><input id="j-email" type="email" required/></div>
+      <div class="field"><label for="j-phone">Phone</label><input id="j-phone" type="tel"/></div>
+      <div class="field full"><label for="j-role">Position applying for</label>
+        <select id="j-role" required>
+          <option value="">Select…</option>
+          <option>Programs Manager — Health</option>
+          <option>M&E Officer</option>
+          <option>Communications Intern</option>
+          <option>Consultancy: Baseline Study</option>
+          <option>Volunteer — Community Educator</option>
+        </select>
+      </div>
+      <div class="field full"><label for="j-cv">Upload CV (PDF)</label><input id="j-cv" type="file" accept=".pdf,.doc,.docx"/></div>
+      <div class="field full"><label for="j-cover">Upload Cover Letter</label><input id="j-cover" type="file" accept=".pdf,.doc,.docx"/></div>
+      <div class="field full"><label for="j-note">Message (optional)</label><textarea id="j-note" rows="4"></textarea></div>
+      <div class="field full"><button class="btn btn-primary" type="submit" data-label="Submit Application">Submit Application</button></div>
+    </div>
+    <p class="form-status" style="margin-top:1rem;"></p>
+  </form>
+  <p class="text-center reveal" style="margin-top:2rem; color: var(--color-muted); font-size:.9rem;">The Safe Center For Development is an equal opportunity employer. We do not discriminate on the basis of race, colour, religion, gender, sexual orientation, national origin, age, disability, or veteran status.</p>
+</div></section>
+</main>
+
+<footer class="site-footer"><div class="container">
+  <div class="footer-grid">
+    <div class="footer-brand"><a href="index.html" class="brand-logo-wrap" aria-label="The Safe Center For Development — Home"><img src="assets/images/logo/wnbg.jpeg" alt="The Safe Center For Development"/></a><p>Building safer communities through sustainable development.</p></div>
+    <div><h4>Quick Links</h4><ul class="footer-links"><li><a href="about.html">About</a></li><li><a href="focus.html">Areas of Focus</a></li><li><a href="training.html">Training</a></li><li><a href="jobs.html">Jobs</a></li></ul></div>
+    <div><h4>Resources</h4><ul class="footer-links"><li><a href="media.html">News</a></li><li><a href="toolkits.html">Publications</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div><h4>Get in Touch</h4><ul class="footer-links footer-contact"><li>📍 Copperbelt, Zambia</li><li>📞 +260 211 000 000</li><li>✉ hello@safecenter.org.zm</li></ul></div>
+  </div>
+  <div class="footer-bottom"><span>© <span id="year"></span> The Safe Center For Development.</span><span><a href="#">Privacy</a> · <a href="#">Terms</a></span></div>
+</div></footer>
+<button class="back-to-top" aria-label="Back to top">↑</button>
+<script src="js/main.js"></script>
+</body></html>
