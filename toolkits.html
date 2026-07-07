@@ -2,7 +2,7 @@
 <html lang="en"><head>
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Toolkits — The Safe Center For Development</title>
-<meta name="description" content="Guidelines, manuals, templates, and research publications."/>
+<meta name="description" content="Guidelines, manuals, templates, and research publications from The Safe Center for Development."/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet"/>
 <link rel="icon" type="image/png" href="assets/images/logo/favicon-32.png" sizes="32x32"/>
@@ -10,6 +10,23 @@
 <link rel="apple-touch-icon" href="assets/images/logo/apple-touch-icon.png"/>
 <link rel="shortcut icon" href="assets/images/logo/wnbg.jpeg"/>
 <link rel="stylesheet" href="css/styles.css"/>
+<style>
+  .empty-state { max-width: 640px; margin: 0 auto; text-align: center; padding: 3rem 1.5rem; }
+  .empty-illustration {
+    width: 140px; height: 140px; border-radius: 50%; margin: 0 auto 2rem;
+    background: linear-gradient(135deg, rgba(30,142,90,.12), rgba(212,175,55,.15));
+    display: grid; place-items: center; font-size: 4rem;
+    box-shadow: var(--shadow-md); animation: float 4s ease-in-out infinite;
+  }
+  @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+  .empty-state h2 { margin-bottom: .75rem; }
+  .empty-cta { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem; }
+  .coming-soon {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem; margin-top: 3rem;
+  }
+  .coming-soon .icon-card { padding: 1.5rem; }
+</style>
 </head><body>
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header"><div class="container nav">
@@ -29,27 +46,27 @@
   <div class="breadcrumb"><a href="index.html">Home</a> / Toolkits</div>
 </div></section>
 
-<section class="section"><div class="container">
-  <div class="reveal" style="display:flex; flex-wrap:wrap; gap:.5rem; justify-content:center; margin-bottom:2rem;">
-    <button class="btn btn-outline">All</button>
-    <button class="btn btn-outline">Guidelines</button>
-    <button class="btn btn-outline">Manuals</button>
-    <button class="btn btn-outline">Templates</button>
-    <button class="btn btn-outline">Research</button>
-    <button class="btn btn-outline">Case Studies</button>
+<section class="section">
+  <div class="container">
+    <div class="empty-state reveal">
+      <div class="empty-illustration" aria-hidden="true">📚</div>
+      <span class="eyebrow">Coming Soon</span>
+      <h2>Our resource library is being prepared</h2>
+      <p>We're finalising a collection of guidelines, manuals, templates, and research publications drawn from our work across Zambia. Once approved for release, they will be free to download and adapt.</p>
+      <div class="empty-cta">
+        <a href="index.html#donate" class="btn btn-primary">Subscribe for updates</a>
+        <a href="contact.html" class="btn btn-outline">Request a resource</a>
+      </div>
+    </div>
+
+    <div class="coming-soon reveal">
+      <div class="icon-card"><div class="icon-badge">📋</div><h3>Guidelines</h3><p>Frameworks for our programmatic areas.</p></div>
+      <div class="icon-card"><div class="icon-badge">📖</div><h3>Manuals</h3><p>Practical, field-tested implementation guides.</p></div>
+      <div class="icon-card"><div class="icon-badge">📝</div><h3>Templates</h3><p>Editable formats for assessments, budgets, and plans.</p></div>
+      <div class="icon-card"><div class="icon-badge">🔬</div><h3>Research</h3><p>Studies, case studies, and evaluation reports.</p></div>
+    </div>
   </div>
-  <div class="grid grid-3">
-    <article class="card reveal"><div class="card-body"><span class="card-tag">Guideline · PDF</span><h3>Community-Based Child Protection Guidelines</h3><p>Framework and step-by-step process for setting up community-led safeguarding systems.</p><a class="card-link" href="#">Download (2.4 MB)</a></div></article>
-    <article class="card reveal"><div class="card-body"><span class="card-tag">Manual · PDF</span><h3>Savings Group Facilitator Manual</h3><p>Complete curriculum for training savings group facilitators, with session plans.</p><a class="card-link" href="#">Download (3.1 MB)</a></div></article>
-    <article class="card reveal"><div class="card-body"><span class="card-tag">Template · DOCX</span><h3>Community Needs Assessment Template</h3><p>Editable Word template used across our field programs.</p><a class="card-link" href="#">Download (85 KB)</a></div></article>
-    <article class="card reveal"><div class="card-body"><span class="card-tag">Research · PDF</span><h3>Adolescent Nutrition in Rural Zambia (2025)</h3><p>Mixed-methods study across 3 provinces; policy implications and recommendations.</p><a class="card-link" href="#">Download (4.8 MB)</a></div></article>
-    <article class="card reveal"><div class="card-body"><span class="card-tag">Case Study</span><h3>Girls' Education in Luapula</h3><p>How a targeted scholarship model raised retention by 34%.</p><a class="card-link" href="#">Download (1.2 MB)</a></div></article>
-    <article class="card reveal"><div class="card-body"><span class="card-tag">Manual · PDF</span><h3>Climate-Smart Agriculture Handbook</h3><p>Practices for smallholder resilience — planting, water, soil, and market linkages.</p><a class="card-link" href="#">Download (5.6 MB)</a></div></article>
-    <article class="card reveal"><div class="card-body"><span class="card-tag">Guideline</span><h3>Safeguarding Policy Template</h3><p>Adaptable policy for NGOs starting or strengthening their safeguarding practice.</p><a class="card-link" href="#">Download (320 KB)</a></div></article>
-    <article class="card reveal"><div class="card-body"><span class="card-tag">Report</span><h3>Annual Impact Report 2025</h3><p>Our full year in review — reach, outcomes, learnings, and finances.</p><a class="card-link" href="#">Download (8.2 MB)</a></div></article>
-    <article class="card reveal"><div class="card-body"><span class="card-tag">Template · XLSX</span><h3>Budget Planner (Grant Applications)</h3><p>Excel workbook aligned with major donor formats.</p><a class="card-link" href="#">Download (140 KB)</a></div></article>
-  </div>
-</div></section>
+</section>
 </main>
 
 <footer class="site-footer"><div class="container">
