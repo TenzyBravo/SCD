@@ -137,8 +137,30 @@ function initForms() {
       e.preventDefault();
       const status = form.querySelector('.form-status');
       const submit = form.querySelector('button[type="submit"]');
+      const mailto = form.dataset.mailto;
+
+      if (mailto) {
+        const subject = form.dataset.subject || 'Website submission';
+        const lines = [];
+        form.querySelectorAll('input, select, textarea').forEach(el => {
+          if (!el.name && !el.id) return;
+          if (el.type === 'file' || el.type === 'submit' || el.type === 'button') return;
+          const label = (form.querySelector(`label[for="${el.id}"]`)?.textContent || el.name || el.id).trim();
+          const value = (el.value || '').trim();
+          if (value) lines.push(`${label}: ${value}`);
+        });
+        const hasFile = form.querySelector('input[type="file"]')?.files?.length > 0;
+        if (hasFile) lines.push('', '(Please attach your CV to this email before sending.)');
+        const href = `mailto:${mailto}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join('\n'))}`;
+        window.location.href = href;
+        if (status) {
+          status.textContent = '✓ Opening your email app… please review and send.';
+          status.style.color = 'var(--color-primary)';
+        }
+        return;
+      }
+
       if (submit) { submit.disabled = true; submit.textContent = 'Sending…'; }
-      // TODO: POST to backend API when Postgres integration is wired up.
       setTimeout(() => {
         if (status) {
           status.textContent = '✓ Thank you — we\'ll be in touch shortly.';
