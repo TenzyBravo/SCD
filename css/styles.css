@@ -429,3 +429,23 @@ p { margin: 0 0 1em; color: var(--color-muted); }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
 }
+
+/* ===== Empty-state / coming-soon shared styles ===== */
+.empty-state { max-width: 640px; margin: 0 auto; text-align: center; padding: 3rem 1.5rem; }
+.empty-state h2 { margin-bottom: .75rem; }
+.empty-illustration {
+  width: 140px; height: 140px; border-radius: 50%; margin: 0 auto 2rem;
+  background: linear-gradient(135deg, rgba(30,142,90,.12), rgba(212,175,55,.15));
+  display: grid; place-items: center; font-size: 4rem;
+  box-shadow: var(--shadow-md); animation: float 4s ease-in-out infinite;
+}
+.empty-cta { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem; }
+.coming-soon {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem; margin-top: 3rem;
+}
+.coming-soon .icon-card { padding: 1.5rem; }
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
