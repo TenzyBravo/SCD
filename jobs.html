@@ -52,21 +52,26 @@
 
 <section class="section" id="apply" style="background: var(--color-surface);"><div class="container">
   <div class="section-header reveal"><span class="eyebrow">Application</span><h2>Apply Now</h2><p>Send us your CV and a short cover letter. We review applications on a rolling basis and get back to shortlisted candidates within two weeks.</p></div>
-  <form data-form class="reveal" style="max-width:720px; margin:0 auto; background:var(--color-bg); padding:2rem; border-radius:var(--radius-lg); box-shadow:var(--shadow-md);">
+  <form action="https://formsubmit.co/thesafecenterfordevelopment@gmail.com" method="POST" enctype="multipart/form-data" class="reveal" style="max-width:720px; margin:0 auto; background:var(--color-bg); padding:2rem; border-radius:var(--radius-lg); box-shadow:var(--shadow-md);">
+    <input type="hidden" name="_subject" value="Job Application"/>
+    <input type="hidden" name="_template" value="table"/>
+    <input type="hidden" name="_captcha" value="false"/>
+    <input type="hidden" name="_next" value="https://tenzybravo.github.io/SCD/thanks.html"/>
+    <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none"/>
     <div class="form-grid">
-      <div class="field"><label for="j-first">First name</label><input id="j-first" type="text" required/></div>
-      <div class="field"><label for="j-last">Last name</label><input id="j-last" type="text" required/></div>
-      <div class="field"><label for="j-email">Email</label><input id="j-email" type="email" required/></div>
-      <div class="field"><label for="j-phone">Phone</label><input id="j-phone" type="tel"/></div>
+      <div class="field"><label for="j-first">First name</label><input id="j-first" name="first_name" type="text" required/></div>
+      <div class="field"><label for="j-last">Last name</label><input id="j-last" name="last_name" type="text" required/></div>
+      <div class="field"><label for="j-email">Email</label><input id="j-email" name="email" type="email" required/></div>
+      <div class="field"><label for="j-phone">Phone</label><input id="j-phone" name="phone" type="tel"/></div>
       <div class="field full"><label for="j-role">Position applying for</label>
-        <select id="j-role" required>
+        <select id="j-role" name="position" required>
           <option value="">Select…</option>
           <option>Remote Volunteer Fundraiser</option>
         </select>
       </div>
-      <div class="field full"><label for="j-cv">Upload CV (PDF)</label><input id="j-cv" type="file" accept=".pdf,.doc,.docx"/></div>
-      <div class="field full"><label for="j-cover">Upload Cover Letter</label><input id="j-cover" type="file" accept=".pdf,.doc,.docx"/></div>
-      <div class="field full"><label for="j-note">Message (optional)</label><textarea id="j-note" rows="4"></textarea></div>
+      <div class="field full"><label for="j-cv">Upload CV (PDF)</label><input id="j-cv" name="cv" type="file" accept=".pdf,.doc,.docx"/></div>
+      <div class="field full"><label for="j-cover">Upload Cover Letter</label><input id="j-cover" name="cover_letter" type="file" accept=".pdf,.doc,.docx"/></div>
+      <div class="field full"><label for="j-note">Message (optional)</label><textarea id="j-note" name="message" rows="4"></textarea></div>
       <div class="field full"><button class="btn btn-primary" type="submit" data-label="Submit Application">Submit Application</button></div>
     </div>
     <p class="form-status" style="margin-top:1rem;"></p>

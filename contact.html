@@ -35,12 +35,15 @@
       <span class="eyebrow">Reach Out</span>
       <h2>Send us a message</h2>
       <p>Fill in the form and we'll respond within two working days. For urgent matters, please use the emergency contact below.</p>
-      <form data-form style="background:var(--color-bg); padding:2rem; border-radius:var(--radius-lg); box-shadow:var(--shadow-md); margin-top:1.5rem;">
+      <form data-form action="https://formsubmit.co/ajax/thesafecenterfordevelopment@gmail.com" method="POST" style="background:var(--color-bg); padding:2rem; border-radius:var(--radius-lg); box-shadow:var(--shadow-md); margin-top:1.5rem;">
+        <input type="hidden" name="_subject" value="Website Contact Message"/>
+        <input type="hidden" name="_template" value="table"/>
+        <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none"/>
         <div class="form-grid">
-          <div class="field"><label for="c-name">Full name</label><input id="c-name" type="text" required/></div>
-          <div class="field"><label for="c-email">Email</label><input id="c-email" type="email" required/></div>
-          <div class="field full"><label for="c-subject">Subject</label><input id="c-subject" type="text" required/></div>
-          <div class="field full"><label for="c-msg">Message</label><textarea id="c-msg" rows="5" required></textarea></div>
+          <div class="field"><label for="c-name">Full name</label><input id="c-name" name="name" type="text" required/></div>
+          <div class="field"><label for="c-email">Email</label><input id="c-email" name="email" type="email" required/></div>
+          <div class="field full"><label for="c-subject">Subject</label><input id="c-subject" name="subject" type="text" required/></div>
+          <div class="field full"><label for="c-msg">Message</label><textarea id="c-msg" name="message" rows="5" required></textarea></div>
           <div class="field full"><button class="btn btn-primary" type="submit" data-label="Send Message">Send Message</button></div>
         </div>
         <p class="form-status" style="margin-top:1rem;"></p>

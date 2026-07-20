@@ -130,45 +130,67 @@ function initBackToTop() {
   btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 }
 
-/* ---- Forms (client-side stub — swap for Postgres/API later) ---- */
+/* ---- Forms (submit to FormSubmit — https://formsubmit.co) ----
+   • Forms with file uploads (e.g. Jobs/CV) submit natively via a normal POST,
+     because file attachments can't be sent through the AJAX endpoint.
+   • All other forms submit via fetch() to the FormSubmit AJAX endpoint so the
+     visitor stays on the page and sees the inline confirmation message.
+   • A legacy `data-mailto` path is kept for any form that still uses it. */
 function initForms() {
   document.querySelectorAll('form[data-form]').forEach(form => {
+    const hasFile = !!form.querySelector('input[type="file"]');
+
     form.addEventListener('submit', (e) => {
-      e.preventDefault();
       const status = form.querySelector('.form-status');
       const submit = form.querySelector('button[type="submit"]');
-      const mailto = form.dataset.mailto;
 
+      /* 1) Legacy: open the visitor's email app (fallback only) */
+      const mailto = form.dataset.mailto;
       if (mailto) {
+        e.preventDefault();
         const subject = form.dataset.subject || 'Website submission';
         const lines = [];
         form.querySelectorAll('input, select, textarea').forEach(el => {
           if (!el.name && !el.id) return;
-          if (el.type === 'file' || el.type === 'submit' || el.type === 'button') return;
+          if (el.type === 'file' || el.type === 'submit' || el.type === 'button' || el.type === 'hidden') return;
           const label = (form.querySelector(`label[for="${el.id}"]`)?.textContent || el.name || el.id).trim();
           const value = (el.value || '').trim();
           if (value) lines.push(`${label}: ${value}`);
         });
-        const hasFile = form.querySelector('input[type="file"]')?.files?.length > 0;
-        if (hasFile) lines.push('', '(Please attach your CV to this email before sending.)');
-        const href = `mailto:${mailto}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join('\n'))}`;
-        window.location.href = href;
-        if (status) {
-          status.textContent = '✓ Opening your email app… please review and send.';
-          status.style.color = 'var(--color-primary)';
+        if (form.querySelector('input[type="file"]')?.files?.length > 0) {
+          lines.push('', '(Please attach your CV to this email before sending.)');
         }
+        window.location.href = `mailto:${mailto}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join('\n'))}`;
+        if (status) { status.textContent = '✓ Opening your email app… please review and send.'; status.style.color = 'var(--color-primary)'; }
         return;
       }
 
-      if (submit) { submit.disabled = true; submit.textContent = 'Sending…'; }
-      setTimeout(() => {
-        if (status) {
-          status.textContent = '✓ Thank you — we\'ll be in touch shortly.';
-          status.style.color = 'var(--color-primary)';
-        }
-        form.reset();
-        if (submit) { submit.disabled = false; submit.textContent = submit.dataset.label || 'Submit'; }
-      }, 700);
+      /* 2) Forms with file uploads submit natively (browser handles the POST) */
+      if (hasFile) return;
+
+      /* 3) Everything else: AJAX POST to the form's action (FormSubmit) */
+      const action = form.getAttribute('action');
+      if (!action) return;
+      e.preventDefault();
+      if (submit) { submit.disabled = true; submit.dataset.orig = submit.textContent; submit.textContent = 'Sending…'; }
+
+      fetch(action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      })
+        .then(res => res.json().catch(() => ({})).then(data => ({ ok: res.ok, data })))
+        .then(({ ok, data }) => {
+          if (!ok) throw new Error(data.message || 'Submission failed');
+          if (status) { status.textContent = '✓ Thank you — we\'ve received your message and will be in touch.'; status.style.color = 'var(--color-primary)'; }
+          form.reset();
+        })
+        .catch(() => {
+          if (status) { status.textContent = '⚠ Sorry, something went wrong. Please email thesafecenterfordevelopment@gmail.com directly.'; status.style.color = '#c0392b'; }
+        })
+        .finally(() => {
+          if (submit) { submit.disabled = false; submit.textContent = submit.dataset.label || submit.dataset.orig || 'Submit'; }
+        });
     });
   });
 }
