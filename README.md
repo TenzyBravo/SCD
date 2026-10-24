@@ -45,11 +45,12 @@ XAMPP or Laragon:
 3. Serve this folder as the document root and open `/admin` to create the first
    administrator account.
 
-## Swapping in real assets
+## Updating images
 
-- **Logo**: replace the `<span class="brand-mark">SCD</span>` block in every HTML file's header/footer with `<img src="assets/images/logo.svg" alt="The Safe Center For Development" />`. Size ~42×42 in the header.
-- **Hero image**: change the URL in `css/styles.css` under `.hero::before`.
-- **Program/news photos**: swap the Unsplash `src` attributes on `.card-media img`.
+- **Logo**: `assets/images/logo/` (`wnbg.jpeg` is used in the header, footer and as the favicon).
+- **Hero image**: `assets/images/hero/hero.jpeg`, set in `css/styles.css` under `.hero::before`.
+- **Photos on static pages**: `assets/images/programs/` and `assets/images/team/`.
+- **News, toolkit and course photos/files**: upload them in the admin area; they are stored in `storage/uploads/`.
 
 ## Forms
 
@@ -63,14 +64,12 @@ position drop-downs are filled from the database.
 - Dark mode toggle (persisted)
 - Scroll reveal animations, animated counters, autoplay testimonial slider
 - Partner logo marquee, back-to-top button, skip link, reduced-motion support
-- Accessible forms with client-side stub submission
+- Accessible forms, submitted through FormSubmit
 - SEO meta + OG tags, semantic HTML
 - Google Fonts (Poppins + Inter), emerald/gold palette per brief
 - Admin area: staff accounts with roles, editable permissions, account lockout, audit log; manage news, toolkits, jobs and courses
 
-## Known placeholders
+## Still to do
 
-- Logo (using text mark "SCD" — swap for real file when supplied)
-- All body copy is plausible sample text — replace with approved SCD copy
-- Photos are Unsplash CDN links — swap for real field photos
-- Google Map is an OpenStreetMap embed with approximate Lusaka coordinates — swap for real address embed
+- Two cards on `focus.html` (Research & Innovation, Emergency Response) use Unsplash stock photos — replace with SCD photos.
+- The contact page map shows the Ndola area but has no pin on the office.
