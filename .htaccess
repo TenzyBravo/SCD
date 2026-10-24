@@ -1,0 +1,42 @@
+# ============================================================================
+# The Safe Center For Development — Apache rules (Hostinger)
+#
+# Most pages are plain .html files and are served as-is. The pages whose
+# content is managed in the admin area, uploaded files, and /admin itself go
+# to index.php. The application folders are never reachable over HTTP.
+# ============================================================================
+
+DirectoryIndex index.html
+Options -Indexes -MultiViews
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Application code, configuration, database scripts, private storage, docs.
+    RewriteRule ^(app|config|database|storage|docs)(/|$) - [F,L]
+
+    # Database-driven pages and admin area.
+    RewriteRule ^(media|toolkits|jobs|training)\.html$ index.php [L]
+    RewriteRule ^media/[^/]+/?$ index.php [L]
+    RewriteRule ^uploads/[^/]+$ index.php [L]
+    RewriteRule ^admin(/.*)?$ index.php [L]
+</IfModule>
+
+# Never serve dotfiles, docs, database dumps or logs, whatever the path.
+<FilesMatch "^\.|\.(md|sql|log|ini|bak|swp|dist)$">
+    Require all denied
+</FilesMatch>
+
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header unset X-Powered-By
+</IfModule>
+
+# PHP limits for uploads (only applies where PHP runs as an Apache module;
+# on Hostinger set these in hPanel → Advanced → PHP Configuration instead).
+<IfModule mod_php.c>
+    php_flag display_errors Off
+    php_value upload_max_filesize 20M
+    php_value post_max_size 25M
+</IfModule>
