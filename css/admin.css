@@ -16,3 +16,4 @@
 .audit-values { font-size: .8rem; max-width: 360px; white-space: pre-wrap; word-break: break-word; }
 .admin a.card { color: var(--bs-body-color); }
 .admin-bar .nav-link, .admin-bar .btn { white-space: nowrap; }
+.thumb-square { width: 44px; height: 44px; object-position: center top; }

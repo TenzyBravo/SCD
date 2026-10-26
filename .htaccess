@@ -16,7 +16,7 @@ Options -Indexes -MultiViews
     RewriteRule ^(app|config|database|storage|docs)(/|$) - [F,L]
 
     # Database-driven pages and admin area.
-    RewriteRule ^(media|toolkits|jobs|training)\.html$ index.php [L]
+    RewriteRule ^(about|media|toolkits|jobs|training)\.html$ index.php [L]
     RewriteRule ^media/[^/]+/?$ index.php [L]
     RewriteRule ^uploads/[^/]+$ index.php [L]
     RewriteRule ^admin(/.*)?$ index.php [L]

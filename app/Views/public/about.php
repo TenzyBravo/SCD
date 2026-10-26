@@ -1,4 +1,13 @@
-<!DOCTYPE html>
+<?php
+/**
+ * About page. Everything here is static except the Leadership Team, which is
+ * managed under Admin → Team. Rendered without a layout because the page has
+ * its own <head>; keep its header/footer in step with the static pages.
+ *
+ * @var array $team
+ */
+use App\Models\TeamMember;
+?><!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
@@ -99,54 +108,20 @@
     <div class="container">
       <div class="section-header reveal"><span class="eyebrow">People</span><h2>Leadership Team</h2><p>Meet the people leading The Safe Center for Development.</p></div>
       <div class="grid grid-3">
+<?php foreach ($team as $member): ?>
         <article class="card reveal">
-          <div class="card-media" style="aspect-ratio: 1/1;"><img loading="lazy" alt="Beatrice Kafwembe" src="assets/images/team/Executive%20director.jpeg" style="object-position: center top;"/></div>
+<?php if ($member['image_path']): ?>
+          <div class="card-media" style="aspect-ratio: 1/1;"><img loading="lazy" alt="<?= e($member['name']) ?>" src="<?= e(fileUrl($member['image_path'])) ?>" style="object-position: <?= e(TeamMember::POSITIONS[$member['image_position']][1] ?? 'center top') ?>;"/></div>
+<?php endif; ?>
           <div class="card-body">
-            <span class="card-tag">Volunteer Board Member</span>
-            <h3>Beatrice Kafwembe</h3>
-            <p>A public health, Educationist, community development, Research, and mental Health specialist with over 8 years of experience advancing health, education, community development,  Research, and mental well-being programs. She has worked with USAID, the United Nations, international NGOs, and local partners to deliver evidence-based, people-centered solutions that strengthen communities and promote equitable health outcomes.member of the Liquid Barrier USA as the Voice of Africa and member of the EU-AU youth voice lab.</p>
+            <span class="card-tag"><?= e($member['title']) ?></span>
+            <h3><?= e($member['name']) ?></h3>
+<?php if ($member['bio']): ?>
+            <p><?= e($member['bio']) ?></p>
+<?php endif; ?>
           </div>
         </article>
-        <article class="card reveal">
-          <div class="card-media" style="aspect-ratio: 1/1;"><img loading="lazy" alt="Beatrice Saizalo" src="assets/images/team/Chief%20Executive%20officer.jpeg" style="object-position: center top;"/></div>
-          <div class="card-body">
-            <span class="card-tag">Volunteer Board Member</span>
-            <h3>Beatrice Saizalo</h3>
-            <p>An educator, community development practitioner, child protection and safeguarding professional, and humanitarian with over four years of experience in teaching, case management support, and delivering community-based social services for vulnerable children and families. A member of the AU–EU Youth Voices Lab and currently pursuing an MBA at the University of Zambia. Passionate about empowering communities, advancing child protection, promoting social inclusion, and driving sustainable development through education, advocacy, and youth engagement.</p>
-          </div>
-        </article>
-        <article class="card reveal">
-          <div class="card-media" style="aspect-ratio: 1/1;"><img loading="lazy" alt="Temwani Zangi Zgambo" src="assets/images/team/Board%20chaiperson.png" style="object-position: center top;"/></div>
-          <div class="card-body">
-            <span class="card-tag">Volunteer Board Member</span>
-            <h3>Temwani Zangi Zgambo</h3>
-            <p>An IT and data management professional, systems administrator, and founder of Doubl Z Tech Solutions, based in Lusaka, Zambia. With over five years of experience spanning technical support, systems administration, monitoring and evaluation, and learning management systems, he has worked across healthcare, education, and nonprofit environments, supporting organisations in building reliable IT infrastructure and data-driven programme systems. He is passionate about using technology to solve real problems.</p>
-          </div>
-        </article>
-        <article class="card reveal">
-          <div class="card-media" style="aspect-ratio: 1/1;"><img loading="lazy" alt="Finance Manager" src="assets/images/team/Finance.jpeg" style="object-position: center top;"/></div>
-          <div class="card-body">
-            <span class="card-tag">Finance Manager</span>
-            <h3>Benjamin Zulu</h3>
-            <p>An accountant with over five years of experience and a law school graduate — bringing dual expertise in finance and legal compliance to every engagement. His approach is built on precision, integrity, and relentless follow-through, turning complex numbers and legal requirements into clear, actionable strategy. Motivated, ambitious, and known for a no-shortcuts work ethic, he helps organisations stay compliant, protect their interests, and grow with confidence — and is passionate about making a difference in less-privileged communities.</p>
-          </div>
-        </article>
-        <article class="card reveal">
-          <div class="card-media" style="aspect-ratio: 1/1;"><img loading="lazy" alt="Board Member" src="assets/images/team/Board%20member.jpeg" style="object-position: center top;"/></div>
-          <div class="card-body">
-            <span class="card-tag">Board Member</span>
-            <h3>Moka Mulobela</h3>
-            <p>A highly motivated and passionate educator and community developer with over four years of teaching experience. A driving force in creating vibrant, effective learning environments — with the ability to communicate complex information clearly and accessibly. An approachable community development worker with the experience, skills, and qualifications to support planning, research, and knowledge processes across a variety of organisations.</p>
-          </div>
-        </article>
-        <article class="card reveal">
-          <div class="card-media" style="aspect-ratio: 1/1;"><img loading="lazy" alt="Secretary" src="assets/images/team/Secretary.jpeg" style="object-position: center 25%;"/></div>
-          <div class="card-body">
-            <span class="card-tag">Secretary</span>
-            <h3>Mwansa Zulu</h3>
-            <p>A manager responsible for overseeing, leading, and coordinating operations — handling administrative duties, bridging the gap between staff and upper-level administration, and ensuring resources are used efficiently to achieve organisational goals. She also brings strong customer service skills including empathy, problem solving, communication, active listening, patience, and adaptability.</p>
-          </div>
-        </article>
+<?php endforeach; ?>
       </div>
     </div>
   </section>

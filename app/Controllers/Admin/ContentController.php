@@ -133,11 +133,12 @@ abstract class ContentController extends Controller
     /** Long text is left out of the audit trail to keep it readable. */
     private function loggable(array $cols): array
     {
-        return array_diff_key($cols, array_flip(['body', 'description', 'how_to_apply']));
+        return array_diff_key($cols, array_flip(['body', 'description', 'how_to_apply', 'bio']));
     }
 
     private function title(array $row): string
     {
-        return mb_substr((string)($row['title'] ?? ''), 0, 200);
+        $label = isset($row['name']) ? $row['name'] . ' (' . ($row['title'] ?? '') . ')' : ($row['title'] ?? '');
+        return mb_substr((string)$label, 0, 200);
     }
 }

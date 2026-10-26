@@ -1,7 +1,7 @@
 # Admin area — setting it up on Hostinger
 
-The Media, Toolkits, Jobs and Training pages now come from a database that
-staff manage at **https://safecenterdev.org/admin**. Every other page is still
+The Media, Toolkits, Jobs and Training pages, and the Leadership Team on the
+About page, now come from a database that staff manage at **https://safecenterdev.org/admin**. Every other page is still
 a plain `.html` file. The site keeps the same addresses (`media.html`,
 `jobs.html`, …), so links and search results keep working.
 
@@ -31,8 +31,8 @@ database. Then, with the database selected on the left:
 1. **Import** → choose `database/schema.sql` from this repository → **Go**.
 2. **Import** again → choose `database/seed.sql` → **Go**.
 
-`seed.sql` creates the five roles and moves the two vacancies and six courses
-that used to be written into the HTML pages into the database.
+`seed.sql` creates the five roles and moves the vacancies, courses and
+Leadership Team that used to be written into the HTML pages into the database.
 
 ## 4. Deploy the code
 
@@ -70,7 +70,7 @@ the first time they sign in.
 
 | Role | Can manage |
 |---|---|
-| Administrator | Everything, including staff accounts, role permissions and the audit log |
+| Administrator | Everything, including the Leadership Team, staff accounts, role permissions and the audit log |
 | Content Editor | News & media, toolkits, jobs, training |
 | Communications | News & media, toolkits |
 | HR Officer | Jobs |
@@ -95,6 +95,18 @@ administrator cannot be demoted or suspended, so nobody can lock the site out.
 
 The website's forms (contact, newsletter, training registration, job
 applications) still go to FormSubmit and arrive by email, as before.
+
+## Updates to an existing site
+
+Some changes need a one-off database update as well as the code. Each update is
+a file in `database/updates/`. Import it in phpMyAdmin (select the database →
+**Import** → choose the file → **Go**) **before** merging the change, and only
+once. A site set up from scratch with `schema.sql` + `seed.sql` already includes
+every update.
+
+| File | Adds |
+|---|---|
+| `2026-10-26-leadership-team.sql` | Leadership Team on the About page, editable under **Admin → Team** (Administrators only) |
 
 ## Troubleshooting
 
