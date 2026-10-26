@@ -100,8 +100,8 @@ applications) still go to FormSubmit and arrive by email, as before.
 
 Some changes need a one-off database update as well as the code. Each update is
 a file in `database/updates/`. Import it in phpMyAdmin (select the database →
-**Import** → choose the file → **Go**) **before** merging the change, and only
-once. A site set up from scratch with `schema.sql` + `seed.sql` already includes
+**Import** → choose the file → **Go**) **before** merging the change. Importing an update again is harmless: it only
+adds what is missing. A site set up from scratch with `schema.sql` + `seed.sql` already includes
 every update.
 
 | File | Adds |
