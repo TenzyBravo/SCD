@@ -9,6 +9,7 @@ use App\Models\Course;
 use App\Models\Job;
 use App\Models\Post;
 use App\Models\Resource;
+use App\Models\TeamMember;
 
 /**
  * The public pages whose content staff manage in the admin area.
@@ -44,6 +45,12 @@ final class SiteController extends Controller
     public function jobs(): void
     {
         $this->view('public/jobs', ['jobs' => (new Job())->open()], 'site');
+    }
+
+    public function about(): void
+    {
+        // The About page carries its own <head> and header, so it renders without a layout.
+        $this->view('public/about', ['team' => (new TeamMember())->published()], 'none');
     }
 
     public function training(): void

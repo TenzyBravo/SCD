@@ -31,6 +31,10 @@ final class DashboardController extends Controller
             $tiles[] = ['Courses', 'training', $count("SELECT COUNT(*) FROM courses WHERE deleted_at IS NULL AND status = 'published'"),
                         $count("SELECT COUNT(*) FROM courses WHERE deleted_at IS NULL AND status = 'draft'")];
         }
+        if (can('team.manage')) {
+            $tiles[] = ['Leadership team', 'team', $count("SELECT COUNT(*) FROM team_members WHERE deleted_at IS NULL AND status = 'published'"),
+                        $count("SELECT COUNT(*) FROM team_members WHERE deleted_at IS NULL AND status = 'draft'")];
+        }
 
         $this->view('admin/dashboard', [
             'tiles'    => $tiles,

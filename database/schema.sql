@@ -145,3 +145,22 @@ CREATE TABLE courses (
     CONSTRAINT fk_courses_creator FOREIGN KEY (created_by) REFERENCES users (id) ON DELETE SET NULL,
     CONSTRAINT fk_courses_editor  FOREIGN KEY (updated_by) REFERENCES users (id) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- About page: Leadership Team.
+CREATE TABLE team_members (
+    id             INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    name           VARCHAR(120) NOT NULL,
+    title          VARCHAR(120) NOT NULL,
+    bio            TEXT         NULL,
+    image_path     VARCHAR(255) NULL,
+    image_position ENUM('top','upper','center') NOT NULL DEFAULT 'top',
+    status         ENUM('draft','published') NOT NULL DEFAULT 'draft',
+    sort_order     INT          NOT NULL DEFAULT 0,
+    created_by     INT UNSIGNED NULL,
+    updated_by     INT UNSIGNED NULL,
+    created_at     TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at     TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    deleted_at     DATETIME     NULL,
+    CONSTRAINT fk_team_creator FOREIGN KEY (created_by) REFERENCES users (id) ON DELETE SET NULL,
+    CONSTRAINT fk_team_editor  FOREIGN KEY (updated_by) REFERENCES users (id) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

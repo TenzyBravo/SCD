@@ -15,6 +15,7 @@ $r->get('/media/{slug}',   ['SiteController', 'post']);
 $r->get('/toolkits.html',  ['SiteController', 'toolkits']);
 $r->get('/jobs.html',      ['SiteController', 'jobs']);
 $r->get('/training.html',  ['SiteController', 'training']);
+$r->get('/about.html',     ['SiteController', 'about']);
 $r->get('/uploads/{file}', ['UploadController', 'show']);
 
 // ---------------------------------------------------------------- sign-in
@@ -35,6 +36,7 @@ $content = [
     'toolkits' => ['Admin\\ResourcesController', 'toolkits.manage'],
     'jobs'     => ['Admin\\JobsController',      'jobs.manage'],
     'training' => ['Admin\\CoursesController',   'training.manage'],
+    'team'     => ['Admin\\TeamController',      'team.manage'],
 ];
 foreach ($content as $path => [$controller, $permission]) {
     $mw = ['can:' . $permission];

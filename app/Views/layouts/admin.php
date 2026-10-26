@@ -13,6 +13,7 @@ $nav = [
     ['admin/toolkits', 'Toolkits',       'toolkits.manage'],
     ['admin/jobs',     'Jobs',           'jobs.manage'],
     ['admin/training', 'Training',       'training.manage'],
+    ['admin/team',     'Team',           'team.manage'],
     ['admin/users',    'Staff accounts', 'users.manage'],
     ['admin/roles',    'Roles',          'roles.manage'],
     ['admin/audit',    'Audit log',      'audit.view'],
